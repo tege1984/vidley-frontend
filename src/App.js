@@ -8,7 +8,6 @@ class App extends Component {
     return (
       <main role="main" className="container">
         <Movies />
-        <Pagination />
       </main>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import Like from "./common/Like";
+import Pagination from "./common/pagination";
 class Movies extends Component {
   state = {
     movies: getMovies()
@@ -18,6 +19,15 @@ class Movies extends Component {
     movies[index] = { ...movies[index] };
     movies[index].liked = !movies[index].liked;
     this.setState({ movies });
+  };
+
+  handlePagination = (pageCount, pageLimit, movies) => {
+    const moviesInPage = movies.slice(
+      pageCount * pageLimit - pageLimit,
+      pageCount * pageLimit
+    );
+    this.setState({ movies: moviesInPage });
+    console.log(moviesInPage);
   };
 
   render() {
@@ -65,6 +75,11 @@ class Movies extends Component {
             ))}
           </tbody>
         </table>
+
+        <Pagination
+          movies={this.state.movies}
+          onClick={this.handlePagination}
+        />
       </React.Fragment>
     );
   }
