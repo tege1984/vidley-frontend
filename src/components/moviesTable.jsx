@@ -1,15 +1,32 @@
 import React from "react";
 import Like from "./common/Like";
 const MoviesTable = props => {
-  const { movies, onLike, onDelete } = props;
+  const { movies, onLike, onDelete, onSort } = props;
   return (
     <table className="table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Gener</th>
-          <th>Stoke</th>
-          <th>Rate</th>
+          <th style={{ cursor: "pointer" }} onClick={() => onSort("title")}>
+            Title
+          </th>
+          <th
+            style={{ cursor: "pointer" }}
+            onClick={() => onSort("genre.name")}
+          >
+            Gener
+          </th>
+          <th
+            style={{ cursor: "pointer" }}
+            onClick={() => onSort("numberInStock")}
+          >
+            Stoke
+          </th>
+          <th
+            style={{ cursor: "pointer" }}
+            onClick={() => onSort("dailyRentalRate")}
+          >
+            Rate
+          </th>
           <th />
           <th />
         </tr>
