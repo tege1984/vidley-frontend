@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Movies from "./components/movies";
-import Pagination from "./components/common/Pagination";
 
 class App extends Component {
   render() {

@@ -26,7 +26,6 @@ class Movies extends Component {
   };
 
   handleLike = movie => {
-    console.log("like icon cliked", movie);
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = { ...movies[index] };
@@ -39,15 +38,14 @@ class Movies extends Component {
   };
 
   handleGenreSelect = genre => {
-    console.log(genre);
     this.setState({
       selectedGenre: genre,
       currentPage: 1
     });
   };
 
-  handleSort = path => {
-    this.setState({ sortColumn: { path, order: "asc" } });
+  handleSort = sortColumn => {
+    this.setState({ sortColumn });
   };
 
   render() {
@@ -81,6 +79,7 @@ class Movies extends Component {
           <p>Showing {filtered.length} movies are the database.</p>
           <MoviesTable
             movies={movies}
+            sortColumn={sortColumn}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
             onSort={this.handleSort}
