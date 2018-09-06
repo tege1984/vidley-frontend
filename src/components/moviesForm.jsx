@@ -1,19 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class MoviesForm extends Component {
-  handleClick = () => {
-    this.props.history.push("/movies");
-  };
-  render() {
-    return (
-      <div>
-        <h1> movies Form {this.props.match.params.id} </h1>
-        <button onClick={this.handleClick} className="btn btn-primary">
-          Save
-        </button>
-      </div>
-    );
-  }
-}
+const MoviesForm = ({ match, history }) => {
+  return (
+    <div>
+      <h1> movies Form {match.params.id} </h1>
+      <button
+        onClick={() => history.push("/movies")}
+        className="btn btn-primary"
+      >
+        Save
+      </button>
+    </div>
+  );
+};
 
 export default MoviesForm;
