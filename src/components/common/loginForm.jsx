@@ -2,18 +2,34 @@ import React, { Component } from "react";
 import Input from "./input";
 class LoginForm extends Component {
   state = {
-    account: { username: "", password: "" }
+    account: { username: "", password: "" },
+    errors: {}
   };
   //username = React.createRef();
   //   componentDidMount() {
   //     this.username.current.focus();
   //   }
+  validate = () => {
+    const errors = {};
+    const { account } = this.state;
+
+    if (account.username.trim() === "")
+      errors.username = "Username is required";
+    if (account.password.trim() === "")
+      errors.password = "Password is required";
+    return Object.keys(errors).length === 0 ? null : errors;
+  };
 
   handleSubmit = e => {
     e.preventDefault();
+    const errors = this.validate();
+    console.log(errors);
+    this.setState({ errors });
+    if (errors) return;
+
     // call to server
     // const username = this.username.current.value;
-    // console.log("form submit", username);
+    console.log("form is submited to the server");
   };
 
   handleChange = ({ currentTarget: input }) => {
